@@ -1,4 +1,6 @@
-.grade{top: 83px; position: relative;} 
+.grade{top: -83px; left: 419px; position: absolute;} 
 .book{left: -50px; top: -10px; position: relative;}
 .font{left: 100px; position: relative; }
 #home{top: 13px; left: 40.5%; position: relative;}
+.links{text-decoration:none; font-family: "consolas"; color:#0066ff;}
+#link1{top: 150px; left: 50px; position: relative;}
