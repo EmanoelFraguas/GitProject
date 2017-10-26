@@ -1,2 +1,4 @@
-.grade{left: 25%; top: -10px; position: absolute;} 
+.grade{top: 83px; position: relative;} 
 .book{left: -50px; top: -10px; position: relative;}
+.font{left: 100px; position: relative; }
+#home{top: 13px; left: 40.5%; position: relative;}
