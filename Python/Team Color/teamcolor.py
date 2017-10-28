@@ -69,6 +69,8 @@ def printMat(matriz):
 	print("Ctrl + C for Quit")
 
 
+
+
 #-------------------------------------------------------#
 #-------------------------------------------------------#
 #            AQUI COMEÇA A PORRA DO CÓDIGO              #
@@ -90,10 +92,10 @@ while True:
 				cls()"""
 	cls()
 	matriz = moves(matrizGridNum, matrizGridColor)
-	printMat(matriz[0])
+	printMat(matriz[1])
 	#print "=========="
 	#printMat(matriz[1])
-	time.sleep(.1)
+	time.sleep(.5)
 
 	cont += 1
 	if cont == 3: 
