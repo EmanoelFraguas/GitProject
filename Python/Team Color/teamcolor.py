@@ -93,7 +93,7 @@ while True:
 	printMat(matriz[0])
 	#print "=========="
 	#printMat(matriz[1])
-	time.sleep(.01)
+	time.sleep(.1)
 
 	cont += 1
 	if cont == 3: 
