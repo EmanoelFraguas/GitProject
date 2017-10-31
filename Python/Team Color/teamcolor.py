@@ -92,7 +92,7 @@ while True:
 				cls()"""
 	cls()
 	matriz = moves(matrizGridNum, matrizGridColor)
-	printMat(matriz[1])
+	printMat(matriz[0])
 	#print "=========="
 	#printMat(matriz[1])
 	time.sleep(.5)
