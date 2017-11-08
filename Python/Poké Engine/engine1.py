@@ -220,25 +220,25 @@ while True:
 			arca.moveUp()
 			arcaMat[1] = arcaMat[1] - 1
 		arcaDir = "w"
-		print(arcaMat[1], "Up.1")
+		#print(arcaMat[1], "Up.1")
 	elif press[115] == 1 or press[274] == 1:
 		if tryMove.down():
 			arca.moveDown()		
 			arcaMat[1] = arcaMat[1] + 1
 		arcaDir = "s"
-		print(arcaMat[1], "Down.1")
+		#print(arcaMat[1], "Down.1")
 	elif press[97] == 1 or press[276] == 1:
 		if tryMove.left():
 			arca.moveLeft()
 			arcaMat[0] = arcaMat[0] - 1
 		arcaDir = "a"
-		print(arcaMat[0],  "Left.1")
+		#print(arcaMat[0],  "Left.1")
 	elif press[100] == 1 or press[275] == 1:
 		if tryMove.right():
 			arca.moveRight()
 			arcaMat[0] = arcaMat[0] + 1
 		arcaDir = "d"	
-		print(arcaMat[0], "Right.0")
+		#print(arcaMat[0], "Right.0")
 
 	for event in pygame.event.get():
 
