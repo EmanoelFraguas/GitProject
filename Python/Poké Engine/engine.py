@@ -195,8 +195,9 @@ tree = pygame.image.load("./src/tree.png")
 newScreen()
 screen.blit(arcaLeft2, arcapos)
 
-test = insert()
-print test
+#test = insert()
+#for i in range(len(test)):
+#	print test[i]
 
 while True:
 
