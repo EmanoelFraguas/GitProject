@@ -10,9 +10,13 @@ def inicio():
 	readKey()
 
 def insertPadrao():
-	arq = open('padrao.pck', 'rb')
-	x = pickle.load(arq)
+	arq = open('arquivo.pck', 'wb')
+	vet = []
+	for i in range(25):
+		vet.append(0)
+	pickle.dump(vet,arq)
 	arq.close()
+	print('Vetor reiniciado.')
 
 def checkNew(n, a):
 	test =  False
@@ -86,7 +90,7 @@ def menu():
 	print('')
 	print('====================')
 	print('0 - Sair')
-	print('1 - Inserir resultados do concurso 1584')
+	print('1 - Reiniciar o vetor(0)')
 	print('2 - Imprime na tela vetor')
 	print('3 - Inserir 10 numeros nao jogados')
 	print('4 - Mostra numeros por ordem frequencia')

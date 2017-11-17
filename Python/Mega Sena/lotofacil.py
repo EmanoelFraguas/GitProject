@@ -39,11 +39,11 @@ def menu():
 	print('')
 	print('====================')
 	print('0 - Sair')
-	print('1 - Resultado do concurso X. (1 ao 1584)')
+	print('1 - Resultado do concurso X. (1 ao %s)' % (totConc))
 	print('2 - Imprime tabela com Frequencia, Media de Aparicao, Porcentagem')
 	print('3 - Inserir 10 numeros nao jogados')
 	print('? - Inserir 15 numeros jogados')
-	print('8 - Testes')
+	print('8 - Ultimos 20 concursos')
 	print('9 - Reseta valores para concurso 1-1584')
 	print('====================')
 	print('')
@@ -53,9 +53,11 @@ def tabela():
 	freq = frequencia()
 	apar = aparicao()
 	media = mediaTot()
-	print "|-----------|----1|----2|----3|----4|----5|----6|----7|----8|----9|---10|---11|---12|---13|---14|---15|---16|---17|---18|---19|---20|---21|---22|---23|---24|---25|"
-	print "|           |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |"
-	print "| Frequencia|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s| " % (freq[0], freq[1], freq[2], freq[3], freq[4], freq[5], freq[6], freq[7], freq[8], freq[9], freq[10], freq[11], freq[12], freq[13], freq[14], freq[15], freq[16], freq[17], freq[18], freq[19], freq[20], freq[21], freq[22], freq[23], freq[24])
+	print "Numero de concursos: %s" % (totConc)
+	print ("")
+	print "|###########|   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |  13 |  14 |  15 |  16 |  17 |  18 |  19 |  20 |  21 |  22 |  23 |  24 |  25 |"
+	print "|-----------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|"
+	print "|  Aparicoes|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s|  %s| " % (freq[0], freq[1], freq[2], freq[3], freq[4], freq[5], freq[6], freq[7], freq[8], freq[9], freq[10], freq[11], freq[12], freq[13], freq[14], freq[15], freq[16], freq[17], freq[18], freq[19], freq[20], freq[21], freq[22], freq[23], freq[24])
 	print "|-----------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|"
 	print "| Media Apar| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f| %.2f|" % (apar[0], apar[1], apar[2], apar[3], apar[4], apar[5], apar[6], apar[7], apar[8], apar[9], apar[10], apar[11], apar[12], apar[13], apar[14], apar[15], apar[16], apar[17], apar[18], apar[19], apar[20], apar[21], apar[22], apar[23], apar[24])
 	print "|-----------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|"
@@ -63,8 +65,8 @@ def tabela():
 
 #Imprime o resultado do concurso digitado
 def resultConcurso():
-	n = int(input('Insira um valor entre 1 e 1584: '))
-	while n < 1 or n > totCont:
+	n = int(input('Insira um valor entre 1 e %s: ' % totConc))
+	while n < 1 or n > totConc:
 		n = int(input('Numero invalido. Digite novamente:'))
 	cls()
 	menu()
@@ -75,7 +77,7 @@ def frequencia():
 	freq = []
 	for i in range(25):
 		freq.append(0)
-	for i in range(totCont):
+	for i in range(totConc):
 		for j in range(15):
 			freq[padrao[i][j]-1] += 1
 	return freq
@@ -84,22 +86,23 @@ def aparicao():
 	freq = []
 	for i in range(25):
 		freq.append(0.0)
-	for i in range(totCont):
+	for i in range(totConc):
 		for j in range(15):
 			freq[padrao[i][j]-1] += 1
 	for i in range(len(freq)):
-		freq[i] = round((totCont / freq[i]), 2)
+		if freq[i] != 0:
+			freq[i] = round((totConc / freq[i]), 2)
 	return freq
 
 def mediaTot():
 	freq = []
 	for i in range(25):
 		freq.append(0.0)
-	for i in range(totCont):
+	for i in range(totConc):
 		for j in range(15):
 			freq[padrao[i][j]-1] += 1
 	for i in range(len(freq)):
-		freq[i] = (100 * freq[i])/totCont
+		freq[i] = (100 * freq[i])/totConc
 		freq[i] = round(freq[i], 1)
 	return freq
 
@@ -121,7 +124,7 @@ def checkSave(n):
 		test = True
 	return test
 
-def saveNew10(a, padrao):
+def saveNew10(a, test):
 	print('====================')
 	print('Deseja salva-los?')
 	print('1 - Sim')
@@ -134,12 +137,15 @@ def saveNew10(a, padrao):
 		n = input()
 		checks = checkSave(n)
 	if n == 1:
-		vet = padrao
+		vet = test
 		vet.append(a)
 				
 		arq = open('arquivo.pck', 'wb')
 		pickle.dump(vet, arq)
 		arq.close()
+		padrao = insertIni()
+		totConc = len(padrao)
+		print totConc
 		
 
 
@@ -155,7 +161,6 @@ def insertNew10():
 			check = checkNew(n, a)
 		a.append(n)
 	print('Numeros Digitados:')
-	#a = a.sorted()
 	a.sort()
 	print a
 	saveNew10(a, padrao)
@@ -191,7 +196,6 @@ def readKey():
 		insertNew10()
 		cls()
 		menu()
-		print("Numeros inseridos com sucesso.")
 		readKey()
 
 	#Insere 15 numeros jogados.
@@ -203,7 +207,10 @@ def readKey():
 
 	#Testes
 	elif insert == 8:
-		padrao = insertPadrao()
+		padrao = insertIni()
+		totConc = len(padrao)
+		for i in range(len(padrao) - 20, len(padrao)):
+			print "Concurso %s: %s" % (i+1, padrao[i])
 		print len(padrao)
 
 
@@ -214,7 +221,12 @@ def readKey():
 	#Reseta valores para concurso 1-1584
 	elif insert == 9:
 		padrao = insertPadrao()
-		totCont = len(padrao)
+		totConc = len(padrao)
+		arq = open('arquivo.pck', 'wb')
+		pickle.dump(padrao, arq)
+		arq.close()
+		padrao = insertIni()
+		totConc = len(padrao)
 		cls()
 		menu()
 		print("Valores resetados.")
@@ -236,5 +248,5 @@ def readKey():
 
 cls()
 padrao = insertIni()
-totCont = len(padrao)
+totConc = len(padrao)
 inicio()
